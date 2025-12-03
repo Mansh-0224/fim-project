@@ -1,0 +1,17 @@
+{
+  "index.html": {
+    "hash": "e706531ffe8723afe56c6931fcc0ea1aa5d896b1502c901f117b04a2fe229846",
+    "size": 5767,
+    "last_modified": 1764517157.085704
+  },
+  "script.js": {
+    "hash": "2559ee0c0e6d1bb32b65440a841cbb734576e747709f0b837f89d3f6966678e4",
+    "size": 6675,
+    "last_modified": 1764511900.183848
+  },
+  "style.css": {
+    "hash": "e498cd38c3616873ec0bc16cd483a7e85cc049cf119c99dd278a2727f1cc8efb",
+    "size": 31421,
+    "last_modified": 1764574566.800891
+  }
+}

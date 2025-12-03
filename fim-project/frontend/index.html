@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Integrity Monitoring System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🔐 File Integrity Monitoring (FIM)</h1>
+            <p class="subtitle">Beginner-Intermediate Project | Monitor file changes using SHA-256 hashing</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            
+            <!-- Section 1: Initialize Baseline -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>📁 Step 1: Initialize Baseline</h2>
+                    <p>Select a folder to create a baseline (snapshot of all file hashes)</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="folderPathInit">Folder Path:</label>
+                    <input 
+                        type="text" 
+                        id="folderPathInit" 
+                        placeholder="e.g., C:\Users\YourName\Documents or /home/user/documents"
+                        class="input-field"
+                    >
+                </div>
+
+                <button class="btn btn-primary" onclick="initializeBaseline()">
+                    Initialize Baseline
+                </button>
+
+                <div id="initStatus" class="status-message"></div>
+            </section>
+
+            <!-- Divider -->
+            <hr class="divider">
+
+            <!-- Section 2: Check Integrity -->
+            <section class="section">
+                <div class="section-header">
+                    <h2>🔍 Step 2: Check Integrity</h2>
+                    <p>Scan the same folder to detect added, modified, or deleted files</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="folderPathCheck">Folder Path:</label>
+                    <input 
+                        type="text" 
+                        id="folderPathCheck" 
+                        placeholder="Same folder path as above"
+                        class="input-field"
+                    >
+                </div>
+
+                <button class="btn btn-success" onclick="checkIntegrity()">
+                    Check Integrity
+                </button>
+
+                <div id="checkStatus" class="status-message"></div>
+
+                <!-- Results Container -->
+                <div id="resultsContainer" class="results-container hidden">
+                    
+                    <!-- Summary Card -->
+                    <div class="summary-card">
+                        <h3>📊 Scan Summary</h3>
+                        <div class="summary-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Total Files:</span>
+                                <span class="stat-value" id="totalFiles">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Unchanged:</span>
+                                <span class="stat-value unchanged" id="unchangedCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Modified:</span>
+                                <span class="stat-value modified" id="modifiedCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Added:</span>
+                                <span class="stat-value added" id="addedCount">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Deleted:</span>
+                                <span class="stat-value deleted" id="deletedCount">0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modified Files -->
+                    <div class="result-section">
+                        <h3 class="result-header modified">⚠️ Modified Files</h3>
+                        <ul id="modifiedList" class="file-list">
+                            <li class="empty-message">No modified files</li>
+                        </ul>
+                    </div>
+
+                    <!-- Added Files -->
+                    <div class="result-section">
+                        <h3 class="result-header added">➕ Added Files</h3>
+                        <ul id="addedList" class="file-list">
+                            <li class="empty-message">No new files</li>
+                        </ul>
+                    </div>
+
+                    <!-- Deleted Files -->
+                    <div class="result-section">
+                        <h3 class="result-header deleted">➖ Deleted Files</h3>
+                        <ul id="deletedList" class="file-list">
+                            <li class="empty-message">No deleted files</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Info -->
+        <footer class="footer">
+            <p>Backend Running on: <code>http://localhost:5000</code></p>
+            <p>Make sure Flask backend is running before using this tool!</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
